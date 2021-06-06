@@ -7,7 +7,8 @@ type Extent = (float*float) list
 
 module treerendering =
 
-    let movetree (Node(label,subtrees) : 'a Tree) (x : float) : 'a Tree = Node(label+x,subtrees);;
+     //(Node(label,subtrees) : 'a Tree) (x : float) : 'a Tree
+    let movetree (Node((label,x),subtrees)) (x' : float) = Node((label,x+x'),subtrees)
 
     let moveextent (e : Extent) (x : float) = List.map (fun (p,q) -> (p+x,q+x)) e
 
@@ -52,7 +53,7 @@ module treerendering =
     let fitlist es = List.map mean (List.zip (fitlistl es) (fitlistr es))
 
     let design_tree =
-        let rec design' (Node(label,subtrees)) =
+        let rec design' (Node(label,subtrees) : 'a Tree) =
             let (trees,extents)  = List.unzip (List.map design' subtrees)
             let positions        = fitlist extents
             let ptrees           = List.map movetree (List.zip trees positions)
