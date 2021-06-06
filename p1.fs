@@ -52,17 +52,15 @@ module treerendering =
     let fitlist es = List.map mean (List.zip (fitlistl es) (fitlistr es))
 
     let design_tree =
-        let rec design' Node(label,subtrees) =
-            let (trees, extents) = List.unzip (List.map (design' subtrees))
+        let rec design' (Node(label,subtrees)) =
+            let (trees,extents)  = List.unzip (List.map design' subtrees)
             let positions        = fitlist extents
             let ptrees           = List.map movetree (List.zip trees positions)
             let pextents         = List.map moveextent (List.zip extents positions)
-            let resultextent     = (0.0, 0.0) :: (mergelist pextents)
-            let resulttree       = Node((label, 0.0), ptrees)
+            let resultextent     = (0.0,0.0) :: (mergelist pextents)
+            let resulttree       = Node((label,0.0), ptrees)
             (resulttree, resultextent)
         fst (design' tree)
-
-
 
 
     // 2 Property-based testing
