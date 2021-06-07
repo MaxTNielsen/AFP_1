@@ -4,14 +4,8 @@ open System
 open AST
 open FsCheck
 open Treerendering
-// Define a function to construct a message to print
+open PropertytestingOne
 
-(* type Tree<'a> = | Node of 'a * ('a Tree list);;
-type IntTree = Tree<int>;;
-type StringTree = Tree<string>;;
-type StringIntTree = Tree<string*float>;;
-type Program = int;;
-type Extent = (float*float) list *)
 
 module treerendering =
 
@@ -64,9 +58,22 @@ module treerendering =
                                         sleaf("snd 2. leaf")]);
                                     sleaf("second leaf")])
 
-        let designedTree = design_tree simpleTree
+        let tree = simpleTree
+
+        
+
+
+        // Printing the designed tree
+        let designedTree = design_tree tree
         let tree = fst designedTree
         let extents = snd designedTree
-        
-        printfn "designtree with input:\n %A \n\n results in:\n %A \n\n And the extents were: \n%A" simpleTree tree extents
+        printfn "designtree with input:\n %A \n\n results in:\n %A \n\n And the extents were: \n%A\n\n" tree tree extents
+
+        // Testing first property
+        //let treepaneder = CalculateTreeAppender tree
+        //printfn "\n\n TreeAppender: %A\n\n" treepaneder
+        //FsCheck.Check.Quick fitInvariant
+
+
+
         0 // return an integer exit code
