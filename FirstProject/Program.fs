@@ -6,6 +6,7 @@ open FsCheck
 open Treerendering
 open PropertytestingOne
 open PropertytestingTwo
+open PropertytestingThree
 
 module treerendering =
 
@@ -70,11 +71,14 @@ module treerendering =
         printfn "designtree with input:\n %A \n\n results in:\n %A \n\n And the extents were: \n%A\n\n" tree tree extents
 
         // Testing first property (uncomment lines below to enable the testing)
-        // let treepaneder = CalculateTreeAppender tree
-        // printfn "\n\n TreeAppender: %A\n\n" treepaneder
-        // FsCheck.Check.Quick fitInvariant
+        //let treepaneder = CalculateTreeAppender tree
+        //printfn "\n\n TreeAppender: %A\n\n" treepaneder
+        // testFitInvariant
 
         // Testing second property (uncomment line below to enable the testing)
         // testSymmetricInvariant
+
+        // Testing third property (uncomment line below to enable the testing)
+        testReflectionInvariant
 
         0 // return an integer exit code

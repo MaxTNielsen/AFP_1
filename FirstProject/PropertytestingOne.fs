@@ -39,4 +39,9 @@ let CalculateTreeAppender (t:Tree<'a>) : TreeAppender =
 let rec fitInvariant (t:Tree<'a>) : bool = 
     let treeapender = CalculateTreeAppender t
     AllNodesDistancedAtleastOneApart treeapender
-        
+       
+let rec fitInvariantFromDesigned (t:Tree<'a*float>) : bool =
+    AllNodesDistancedAtleastOneApart (OrganizeIntoTreeAppender t)
+
+let testFitInvariant =
+    FsCheck.Check.Quick fitInvariant
