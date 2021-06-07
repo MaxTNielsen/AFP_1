@@ -68,25 +68,23 @@ module treerendering =
 
     let mean ((x, y): float * float) = (x + y) / 2.0
 
-    let fitlist es =
-        List.map mean (List.zip (fitlistl es) (fitlistr es))
+    let fitlist es =    let fitlistL = fitlistl es
+                        let fitlistR = fitlistr es
+                        let zippedLists = List.zip fitlistR fitlistL
+                        let meanList = List.map mean zippedLists
+                        meanList
 
     let design_tree tree =
         let rec design' (Node (label, subtrees): 'a Tree) =
             let (trees, extents) = List.unzip (List.map design' subtrees)
             let positions = fitlist extents
-
-            let ptrees =
-                List.map movetree (List.zip trees positions)
-
-            let pextents =
-                List.map moveextent (List.zip extents positions)
-
+            let ptrees = List.map movetree (List.zip trees positions)
+            let pextents = List.map moveextent (List.zip extents positions)
             let resultextent = (0.0, 0.0) :: (mergelist pextents)
             let resulttree = Node((label, 0.0), ptrees)
             (resulttree, resultextent)
 
-        fst (design' tree)
+        design' tree
 
 
     // 2 Property-based testing
@@ -114,6 +112,17 @@ module treerendering =
     [<EntryPoint>]
     let main argv =
         printfn "Running stuff"
-        let gg = rmax 2.1 3.5
-        printfn "rmax with 2.1 and 3.5 results in: %f" gg
+        let leaf = Node(0, [])
+        let lowBranch = Node(1, [leaf;leaf;leaf])
+        let branch = Node(2, [leaf;lowBranch;leaf])
+        let upperbranch = Node(3, [branch;leaf;lowBranch])
+        let complexTree = Node(4, [branch; upperbranch])
+
+        let simpleTree = Node(1, [leaf;leaf])
+
+        let designedTree = design_tree simpleTree
+        let tree = fst designedTree
+        let extents = snd designedTree
+        
+        printfn "designtree with input:\n %A \n\n results in:\n %A \n\n And the extents were: \n%A" simpleTree tree extents
         0 // return an integer exit code
