@@ -34,12 +34,12 @@ module treerendering =
 
     let mergelist es = List.fold merge [] es
 
-    let rmax (p: float, q: float) = if p > q then p else q
+    let rmax (p:float) (q:float) = if p > q then p else q
 
-    let rec fit (ps: Extent) (qs: Extent) : float =
-        match (ps, qs) with
-        | (((_, p) :: ps), ((q, _) :: qs)) -> rmax (fit ps qs, p - q + 1.0)
-        | (_, _) -> 0.0
+    let rec fit (ps : Extent) (qs : Extent) : float =
+        match (ps,qs) with
+        | (((_,p)::ps),((q,_)::qs)) -> rmax (fit ps qs) (p-q+1.0)
+        | (_,_)                     -> 0.0
 
 
     //Optimization idea -> make the function tail recursive
@@ -112,4 +112,8 @@ module treerendering =
         Node("Not implemented",[]) *)
 
     [<EntryPoint>]
-    let main argv = 0 // return an integer exit code
+    let main argv =
+        printfn "Running stuff"
+        let gg = rmax 2.1 3.5
+        printfn "rmax with 2.1 and 3.5 results in: %f" gg
+        0 // return an integer exit code
