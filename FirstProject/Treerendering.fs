@@ -67,15 +67,15 @@ let fitlist es =    let fitlistL = fitlistl es
                     let meanList = List.map mean zippedLists
                     meanList
 
-let design_tree tree =
-    let rec design' (Node (label, subtrees): 'a Tree) =
-        let (trees, extents) = List.unzip (List.map design' subtrees)
-        // Represents the displacements of trees.
-        let positions = fitlist extents
-        let ptrees = List.map movetree (List.zip trees positions)
-        let pextents = List.map moveextent (List.zip extents positions)
-        let resultextent = (0.0, 0.0) :: mergelist pextents
-        let resulttree = Node((label, 0.0), ptrees)
-        (resulttree, resultextent)
+let rec design' (Node (label, subtrees): 'a Tree) =
+    let (trees, extents) = List.unzip (List.map design' subtrees)
+    // Represents the displacements of trees.
+    let positions = fitlist extents
+    let ptrees = List.map movetree (List.zip trees positions)
+    let pextents = List.map moveextent (List.zip extents positions)
+    let resultextent = (0.0, 0.0) :: mergelist pextents
+    let resulttree = Node((label, 0.0), ptrees)
+    (resulttree, resultextent)
 
+let design_tree tree = 
     design' tree

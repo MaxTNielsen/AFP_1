@@ -8,7 +8,8 @@
 
   <ItemGroup>
     <Compile Include="Treerendering.fs" />
-    <Compile Include="Propertytesting.fs" />
+    <Compile Include="PropertytestingOne.fs" />
+    <Compile Include="PropertytestingTwo.fs" />
     <Compile Include="AST.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
