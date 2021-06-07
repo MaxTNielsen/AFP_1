@@ -7,8 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Treerendering.fs" />
+    <Compile Include="AST.fs" />
     <Compile Include="scriptfortesting.fs" />
     <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FsCheck" Version="2.15.3" />
   </ItemGroup>
 
 </Project>
