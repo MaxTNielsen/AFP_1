@@ -14,7 +14,7 @@ let symmetricInvariantExtent (extents:Extent list) : bool =
         fitlistLSatisfied && fitlistRSatisfied
 
 let symmetricInvariant (t:Tree<'a>) : bool =
-    let subt = match t with | Node(label, subtrees) -> subtrees
+    let subt = match t with | Node(_, subtrees) -> subtrees
     let (_, extents) = List.unzip (List.map design' subt)
     symmetricInvariantExtent extents
     
