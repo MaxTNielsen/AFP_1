@@ -94,6 +94,8 @@ module treerendering =
         // testIdeSubInvariant
 
         // printfn "%s" (toPSslow (Node("ss",[])))
-        printfn "%s" (toPSslow tree)
+        //printfn "%s" (toPSslow tree)
+
+        printfn "%s" (toPSfast tree)
 
         0 // return an integer exit code
