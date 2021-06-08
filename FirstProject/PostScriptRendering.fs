@@ -9,7 +9,7 @@ type position =
         y : float
     }
 
-let labelHeight = 10.0
+let labelHeight = 15.0
 
 let toPSslow (t : Tree<'a> ) : string =
     let initialString = "%!
@@ -28,9 +28,9 @@ newpath
             sprintf "(%s) dup stringwidth pop 2 div neg 0 rmoveto show\n" s
         
         let moveDown =   
-            sprintf "%f %f moveto\n" pos.x (pos.y - labelHeight * 2.0)
+            sprintf "%f %f moveto\n" pos.x (pos.y - labelHeight*1.5)
         
-        let positionTo = {x = pos.x ; y = pos.y - labelHeight * 2.0}
+        let positionTo = {x = pos.x ; y = pos.y - labelHeight*1.5}
         
         (posIn + printLabel + moveDown, positionTo)
 
@@ -38,12 +38,10 @@ newpath
         let newPos = {x = pos.x + relativePos * 50.0 ; y = pos.y - 50.0}
 
         let line = 
-            sprintf "%f %f rlineto\n" newPos.x newPos.y
+            sprintf "%f %f lineto\n" newPos.x newPos.y
         
         let moveLine = 
-            sprintf "%f %f moveto\n" newPos.x newPos.y
-
-        
+            sprintf "%f %f moveto\n" pos.x pos.y
 
         (moveLine + line, newPos)
     
