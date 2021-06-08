@@ -3,7 +3,6 @@
 type Tree<'a> = Node of 'a * ('a Tree list)
 type Extent = (float * float) list
 
-//(Node(label,subtrees) : 'a Tree) (x : float) : 'a Tree
 let movetree ((Node ((label, x), subtrees)), (x': float)) = Node((label, x + x'), subtrees)
 
 let moveextent ((e: Extent), (x: float)) = List.map (fun (p, q) -> (p + x, q + x)) e
@@ -23,17 +22,19 @@ let rec fit (ps : Extent) (qs : Extent) : float =
     | (((_,p)::ps),((q,_)::qs)) -> rmax (fit ps qs) (p-q+1.0)
     | (_,_)                     -> 0.0
 
-//Optimization idea -> make the function tail recursive
+////// Optimization ///////////////////////////
+////// Made the function tail recursive ///////
 let fitlistl es =
-    let rec fitlistl_rec acc es =
+    let rec fitlistl_rec acc es accu =
         match (acc, es) with
-        | (_, []) -> []
+        | (_, []) -> List.rev accu
         | (acc, (e :: es)) ->
             let x = fit acc e
             let newAcc = (merge acc (moveextent (e, x)))
-            x :: (fitlistl_rec newAcc es)
+            let newAccu = x :: accu
+            (fitlistl_rec newAcc es newAccu)
 
-    fitlistl_rec [] es
+    fitlistl_rec [] es []
 
 let flipextent (e:Extent) : Extent = List.map (fun (p,q) -> (-q,-p)) e
 let fitlistr es =   let flippedExtents = (List.map flipextent (List.rev es))
