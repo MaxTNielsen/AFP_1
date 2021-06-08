@@ -8,7 +8,7 @@
   - [x] Property 1 (Nodes should be atleast 1 unit apart)
   - [x] Property 2 (Parrent should be centered over its offspring)
   - [x] Property 3 (Symmetric with respect to reflection)
-  - [ ] Property 4 (Identical subtrees are rendered identically)
+  - [x] Property 4 (Identical subtrees are rendered identically)
   - [ ] Discuss briefly you interpretation of each of the four rules and your the results of your tests.
   - [ ] Report part
 - [ ] Translation to PostScript
