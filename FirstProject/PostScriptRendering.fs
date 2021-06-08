@@ -14,12 +14,12 @@ let labelHeight = 15.0
 let toPSslow (t : Tree<'a> ) : string =
     let initialString = "%!
 1 1 scale
-<</PageSize[1400 1000]/ImagingBBox null>> setpagedevice
-700 999 translate
+<</PageSize[595 842]/ImagingBBox null>> setpagedevice
+297 421 translate
 newpath
 /Times-Roman findfont 14 scalefont setfont
 0 -10 moveto\n"
-
+   
     let createLabel (s : string) (pos : position) : (string*position) = 
         let posIn = 
             sprintf "%f %f moveto\n" pos.x (pos.y - labelHeight)
