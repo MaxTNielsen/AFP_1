@@ -20,9 +20,10 @@ let benchmarkStuff (eval:Tree<'a>->string) x : float =
     stopWatch.Elapsed.TotalMilliseconds
 
 let sampleSize = 50
+let sampleLength = 100
 
 let generateSamples =
-    let sample = Gen.sample sampleSize sampleSize treeGenerator
+    let sample = Gen.sample sampleSize sampleLength treeGenerator
     List.map (fun a -> (fst (design_tree a))) sample
 
 let benchmark_PostScriptRendering render_func s designed_samples =
