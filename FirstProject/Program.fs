@@ -11,8 +11,6 @@ open PropertytestingFour
 
 module treerendering =
 
-    
-
 
     // 2 Property-based testing
 
