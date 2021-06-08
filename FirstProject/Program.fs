@@ -10,14 +10,10 @@ open PropertytestingThree
 open PropertytestingFour
 open PostScriptRendering
 open Benchmarking
+open GCLRenderer
 
 module treerendering =
 
-
-
-    // 10
-    //let toGeneralTree (p:Program) : StringTree =
-    //    Node("Not implemented",[]) *)
 
     
 
@@ -65,10 +61,10 @@ module treerendering =
         // printfn "%s" (toPSfast fstedTree)
 
         // Benchmarking, uncomment for benchmarking setups
-        let samples = generateSamples
-        benchmark_slow samples
-        benchmark_fast samples
+        //let samples = generateSamples
+        //benchmark_slow samples
+        //benchmark_fast samples
 
-
+        TestGCLRendering
 
         0 // return an integer exit code

@@ -1,10 +1,6 @@
 ﻿module Treerendering
 
 type Tree<'a> = Node of 'a * ('a Tree list)
-type IntTree = Tree<int>
-type StringTree = Tree<string>
-type StringIntTree = Tree<string * float>
-type Program = int
 type Extent = (float * float) list
 
 //(Node(label,subtrees) : 'a Tree) (x : float) : 'a Tree

@@ -15,7 +15,7 @@ let labelHeight = 15.0
 let initialString = "%!
 1 1 scale
 <</PageSize[595 842]/ImagingBBox null>> setpagedevice
-297 421 translate
+1500 1200 translate
 newpath
 /Times-Roman findfont 14 scalefont setfont
 0 -10 moveto\n"

@@ -15,6 +15,7 @@
     <Compile Include="AST.fs" />
     <Compile Include="PostScriptRendering.fs" />
     <Compile Include="Benchmarking.fs" />
+    <Compile Include="GCLRenderer.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
