@@ -65,11 +65,10 @@ module treerendering =
         // printfn "%s" (toPSfast fstedTree)
 
         // Benchmarking, uncomment for benchmarking setups
-        // benchmark_slow
-        // benchmark_fast
+        let samples = generateSamples
+        benchmark_slow samples
+        benchmark_fast samples
 
-        let sample = (Gen.sample 1 50 treeGenerator).Head
-        printfn "%A" sample
 
 
         0 // return an integer exit code

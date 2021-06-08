@@ -19,17 +19,21 @@ let benchmarkStuff (eval:Tree<'a>->string) x : float =
     stopWatch.Stop()
     stopWatch.Elapsed.TotalMilliseconds
 
-let benchmark_PostScriptRendering render_func s =
-    let sampleSize = 50
+let sampleSize = 50
+
+let generateSamples =
     let sample = Gen.sample sampleSize sampleSize treeGenerator
-    let designed_samples = List.map (fun a -> (fst (design_tree a))) sample
+    List.map (fun a -> (fst (design_tree a))) sample
+
+let benchmark_PostScriptRendering render_func s designed_samples =
+    
 
     let oberservations = List.map (benchmarkStuff render_func) designed_samples
     let sum = List.sum oberservations
     let meanTime = sum / float(sampleSize)
     printfn "Running testof : %s - The mean was: %f - Observations: %A" s meanTime oberservations
 
-let benchmark_slow = benchmark_PostScriptRendering toPSslow "toPSslow"
+let benchmark_slow sample = benchmark_PostScriptRendering toPSslow "toPSslow" sample
 
-let benchmark_fast = benchmark_PostScriptRendering toPSfast "toPSfast"
+let benchmark_fast sample = benchmark_PostScriptRendering toPSfast "toPSfast" sample
 
