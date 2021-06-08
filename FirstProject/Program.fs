@@ -96,6 +96,6 @@ module treerendering =
         // printfn "%s" (toPSslow (Node("ss",[])))
         //printfn "%s" (toPSslow tree)
 
-        printfn "%s" (toPSfast tree)
+        printfn "%s" (toPSfast fstedTree)
 
         0 // return an integer exit code
