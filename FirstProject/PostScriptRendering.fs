@@ -24,9 +24,9 @@ let showString = "stroke\nshowpage\n"
 
 let toPSslow (t : Tree<'a*float> ) : string =
 
-    let createLabel (s : string) (pos : position) : (string*position) = 
+    let createLabel (s : 'a) (pos : position) : (string*position) = 
         let posIn = sprintf "%f %f moveto\n" pos.x (pos.y - labelHeight)
-        let printLabel = sprintf "(%s) dup stringwidth pop 2 div neg 0 rmoveto show\n" s
+        let printLabel = sprintf "(%A) dup stringwidth pop 2 div neg 0 rmoveto show\n" s
         let moveDown = sprintf "%f %f moveto\n" pos.x (pos.y - labelHeight*1.5)
         let positionTo = {x = pos.x ; y = pos.y - labelHeight*1.5}
 
