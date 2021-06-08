@@ -6,11 +6,12 @@
     <WarnOn>3390;$(WarnOn)</WarnOn>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Include="Treerendering.fs" />
+  <ItemGroup>    
+	<Compile Include="Treerendering.fs" />
     <Compile Include="PropertytestingOne.fs" />
     <Compile Include="PropertytestingTwo.fs" />
     <Compile Include="PropertytestingThree.fs" />
+	<Compile Include="PropertytestingFour.fs" />
     <Compile Include="AST.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>

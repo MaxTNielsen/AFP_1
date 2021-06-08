@@ -7,6 +7,7 @@ open Treerendering
 open PropertytestingOne
 open PropertytestingTwo
 open PropertytestingThree
+open PropertytestingFour
 
 module treerendering =
 
@@ -79,6 +80,9 @@ module treerendering =
         // testSymmetricInvariant
 
         // Testing third property (uncomment line below to enable the testing)
-        testReflectionInvariant
+        // testReflectionInvariant
+
+        // Testing fourth property (uncomment line below to enable the testing)
+        testIdeSubInvariant
 
         0 // return an integer exit code
