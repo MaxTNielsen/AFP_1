@@ -15,7 +15,7 @@
   - [x] toPSslow - Slow concatination version of postscript generation
   - [x] toPSfast - Faster stringbuilder version of postscript generation
   - [x] treeToFile - Save tree to file
-  - [ ] posTreeToFile - Save designed position tree to file
+  - [x] posTreeToFile - Save designed position tree to file
   - [ ] Explain your considerations concerning avoidance of repeated code, and present the ideas behind your solution.
   - [ ] Analyse the run time of toPSslow and toPSfast
   - [ ] Conduct timing experiments with positioned trees of varying sized and relate the results to you analyses
