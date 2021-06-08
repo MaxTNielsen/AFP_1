@@ -12,9 +12,9 @@
   - [ ] Discuss briefly you interpretation of each of the four rules and your the results of your tests.
   - [ ] Report part
 - [ ] Translation to PostScript
-  - [ ] toPSslow - Slow concatination version of postscript generation
+  - [x] toPSslow - Slow concatination version of postscript generation
   - [ ] toPSfast - Faster stringbuilder version of postscript generation
-  - [ ] treeToFile - Save tree to file
+  - [x] treeToFile - Save tree to file
   - [ ] posTreeToFile - Save designed position tree to file
   - [ ] Explain your considerations concerning avoidance of repeated code, and present the ideas behind your solution.
   - [ ] Analyse the run time of toPSslow and toPSfast
