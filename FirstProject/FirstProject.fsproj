@@ -13,6 +13,7 @@
     <Compile Include="PropertytestingThree.fs" />
 	<Compile Include="PropertytestingFour.fs" />
     <Compile Include="AST.fs" />
+    <Compile Include="PostScriptRendering.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
