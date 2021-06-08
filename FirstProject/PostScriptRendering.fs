@@ -22,7 +22,7 @@ newpath
 
 let showString = "stroke\nshowpage\n"
 
-let toPSslow (t : Tree<'a> ) : string =
+let toPSslow (t : Tree<'a*float> ) : string =
 
     let createLabel (s : string) (pos : position) : (string*position) = 
         let posIn = sprintf "%f %f moveto\n" pos.x (pos.y - labelHeight)
@@ -60,17 +60,16 @@ let toPSslow (t : Tree<'a> ) : string =
 
         labelString + subString
 
-    let designedTree = fst (design_tree t)
-    let postscriptString = initialString + (renderTree designedTree) + showString
+    let postscriptString = initialString + (renderTree t) + showString
     System.IO.File.WriteAllText("test.ps", postscriptString)
 
     postscriptString
 
-let toPSfast (t : Tree<'a> ) : string =
+let toPSfast (t :Tree<'a*float>) : string =
    
-    let createLabel (s : string) (pos : position) (sb:StringBuilder) : (StringBuilder*position) = 
+    let createLabel (s : 'a) (pos : position) (sb:StringBuilder) : (StringBuilder*position) = 
         let posIn = sprintf "%f %f moveto\n" pos.x (pos.y - labelHeight)
-        let printLabel = sprintf "(%s) dup stringwidth pop 2 div neg 0 rmoveto show\n" s
+        let printLabel = sprintf "(%A) dup stringwidth pop 2 div neg 0 rmoveto show\n" s
         let moveDown = sprintf "%f %f moveto\n" pos.x (pos.y - labelHeight*1.5)
         let positionTo = {x = pos.x ; y = pos.y - labelHeight*1.5}
         
@@ -110,12 +109,16 @@ let toPSfast (t : Tree<'a> ) : string =
         rendersubTree_allchilden labelString subtree1
 
 
-    let designedTree = fst (design_tree t)
-
     let stringBuilder = new StringBuilder(initialString)
-    let postscriptString = (renderTree designedTree stringBuilder).Append(showString).ToString()
-    System.IO.File.WriteAllText("test.ps", postscriptString)
+    let postscriptString = (renderTree t stringBuilder).Append(showString).ToString()
+    
 
     postscriptString
 
 
+    
+let posTreeToFile (filename:string) (t:Tree<'a*float>) =
+    System.IO.File.WriteAllText(filename, (toPSfast t))
+
+let treeToFile (filename:string) (t:Tree<'a>) =
+    posTreeToFile filename (fst (design_tree t))
