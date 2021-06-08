@@ -5,7 +5,7 @@ open FsCheck
 let predicatePosAndLabel f1 f2 =
     f1 <> f2
 
-let predicateLabelOnly f1 f2 = false
+let predicateAlwaysFalse f1 f2 = false
 
 let rec compareTrees x ((tree1 : Tree<'a*float>),(tree2 : Tree<'a*float>)) : bool =
     let (root1, subtree1) = match tree1 with | Node(node, subtree) -> (node, subtree) | _ -> failwith "smth"
@@ -38,7 +38,7 @@ let identicalSubtreeInvariant (tree : Tree<string>) : bool =
     let firstTestTree = List.last subtree
     let secondTestTree = designedTree |> getSecondElem |> getSecondElem |> getSecondElem
 
-    compareTrees predicateLabelOnly (firstTestTree,secondTestTree)
+    compareTrees predicateAlwaysFalse (firstTestTree,secondTestTree)
 
 let testIdeSubInvariant =
     FsCheck.Check.Quick identicalSubtreeInvariant

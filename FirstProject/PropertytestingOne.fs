@@ -21,14 +21,14 @@ let OrganizeIntoTreeAppender (root:Tree<'a*float>) : TreeAppender =
         let absolutePos = acc+relativePos
         let currentList = match (t.TryFind d) with | Some v -> absolutePos::v | None -> [absolutePos]
         let newTreeAppender = Map.add d currentList t
-        let subtreees = extractSubtrees node
+        let subtrees = extractSubtrees node
         
         let rec OrganizeAllSubtrees (subt: Tree<'a*float> list) (acc:TreeAppender) : TreeAppender =
             match subt with
             | [] -> acc
             | head::tail -> let appender = OrganizeIntoTreeAppender_rec head absolutePos acc (d+1)
                             OrganizeAllSubtrees tail appender
-        OrganizeAllSubtrees subtreees newTreeAppender
+        OrganizeAllSubtrees subtrees newTreeAppender
 
     OrganizeIntoTreeAppender_rec root 0.0 Map.empty 0
 
