@@ -27,7 +27,6 @@ let rec fit (ps : Extent) (qs : Extent) : float =
     | (((_,p)::ps),((q,_)::qs)) -> rmax (fit ps qs) (p-q+1.0)
     | (_,_)                     -> 0.0
 
-
 //Optimization idea -> make the function tail recursive
 let fitlistl es =
     let rec fitlistl_rec acc es =
@@ -39,18 +38,6 @@ let fitlistl es =
             x :: (fitlistl_rec newAcc es)
 
     fitlistl_rec [] es
-
-//Optimization idea -> make the function tail recursive
-let fitlistr_old es =
-    let rec fitlistr_rec acc es =
-        match (acc, es) with
-        | (_, []) -> []
-        | (acc, (e :: es)) ->
-            let x = -(fit e acc)
-            let newAcc = (merge (moveextent (e, x)) acc)
-            x :: (fitlistr_rec newAcc es)
-
-    fitlistr_rec [] (List.rev es)
 
 let flipextent (e:Extent) : Extent = List.map (fun (p,q) -> (-q,-p)) e
 let fitlistr es =   let flippedExtents = (List.map flipextent (List.rev es))
