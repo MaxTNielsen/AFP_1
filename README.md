@@ -13,7 +13,7 @@
   - [ ] Report part
 - [ ] Translation to PostScript
   - [x] toPSslow - Slow concatination version of postscript generation
-  - [ ] toPSfast - Faster stringbuilder version of postscript generation
+  - [x] toPSfast - Faster stringbuilder version of postscript generation
   - [x] treeToFile - Save tree to file
   - [ ] posTreeToFile - Save designed position tree to file
   - [ ] Explain your considerations concerning avoidance of repeated code, and present the ideas behind your solution.
