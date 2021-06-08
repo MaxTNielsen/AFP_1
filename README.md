@@ -21,7 +21,7 @@
   - [ ] Analyse the run time of toPSslow and toPSfast
   - [ ] Report part
 - [ ] Rendering Abstract Syntax Tree
-  - [ ] toGeneralTree
+  - [x] toGeneralTree
   - [ ] Make a brief discussion of the principles you used in your transformation from programsto trees of typeTree<string>, and your considerations concerning that transformation
   - [ ] Report part
 - [ ] Extensions
