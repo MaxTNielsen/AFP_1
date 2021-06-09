@@ -22,7 +22,7 @@
   - [ ] Report part
 - [ ] Rendering Abstract Syntax Tree
   - [x] toGeneralTree
-  - [ ] Make a brief discussion of the principles you used in your transformation from programsto trees of typeTree<string>, and your considerations concerning that transformation
+  - [ ] Make a brief discussion of the principles you used in your transformation from programs to trees of typeTree<string>, and your considerations concerning that transformation
   - [ ] Report part
 - [ ] Extensions
   - [ ] Translation to Scalable Vector Graphics
