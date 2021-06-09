@@ -1,31 +1,31 @@
 # AFP_1
 
-- [ ] Design of aesthetic pleasant renderings of trees  
+- [x] Design of aesthetic pleasant renderings of trees  
   - [x] Make F# version of program presented in research paper. 
-  - [ ] List and discuss key observations concerning the translation of SML programs to F#programs
-  - [ ] Report part
-- [ ] Property based testing
+  - [x] List and discuss key observations concerning the translation of SML programs to F#programs
+  - [x] Report part
+- [x] Property based testing
   - [x] Property 1 (Nodes should be atleast 1 unit apart)
   - [x] Property 2 (Parrent should be centered over its offspring)
   - [x] Property 3 (Symmetric with respect to reflection)
   - [x] Property 4 (Identical subtrees are rendered identically)
-  - [ ] Discuss briefly you interpretation of each of the four rules and your the results of your tests.
-  - [ ] Report part
-- [ ] Translation to PostScript
+  - [x] Discuss briefly you interpretation of each of the four rules and your the results of your tests.
+  - [x] Report part
+- [x] Translation to PostScript
   - [x] toPSslow - Slow concatination version of postscript generation
   - [x] toPSfast - Faster stringbuilder version of postscript generation
   - [x] treeToFile - Save tree to file
   - [x] posTreeToFile - Save designed position tree to file
-  - [ ] Explain your considerations concerning avoidance of repeated code, and present the ideas behind your solution.
+  - [x] Explain your considerations concerning avoidance of repeated code, and present the ideas behind your solution.
   - [x] Conduct timing experiments with positioned trees of varying sized and relate the results to you analyses
-  - [ ] Analyse the run time of toPSslow and toPSfast
-  - [ ] Report part
-- [ ] Rendering Abstract Syntax Tree
+  - [x] Analyse the run time of toPSslow and toPSfast
+  - [x] Report part
+- [x] Rendering Abstract Syntax Tree
   - [x] toGeneralTree
-  - [ ] Make a brief discussion of the principles you used in your transformation from programs to trees of typeTree<string>, and your considerations concerning that transformation
-  - [ ] Report part
-- [ ] Extensions
+  - [x] Make a brief discussion of the principles you used in your transformation from programs to trees of typeTree<string>, and your considerations concerning that transformation
+  - [x] Report part
+- [x] Extensions
   - [x] Tail recursion
-  - [ ] Report part
-- [ ] Evaluation
-  - [ ] Report part
+  - [x] Report part
+- [x] Evaluation
+  - [x] Report part
