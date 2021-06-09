@@ -1,0 +1,122 @@
+Running stuff
+Part 1: Designing a tree
+ using input:
+ Node
+  ("root",
+   [Node ("L1", []); Node ("B1", [Node ("01", []); Node ("02", [])]);
+    Node ("B2", [Node ("03", []); Node ("04", [])]); Node ("L2", [])]) 
+
+ results in:
+ Node
+  (("root", 0.0),
+   [Node (("L1", -2.0), []);
+    Node (("B1", -1.0), [Node (("01", -0.5), []); Node (("02", 0.5), [])]);
+    Node (("B2", 1.0), [Node (("03", -0.5), []); Node (("04", 0.5), [])]);
+    Node (("L2", 2.0), [])]) 
+
+ And the extents were: 
+[(0.0, 0.0); (-2.0, 2.0); (-1.5, 1.5)]
+
+
+
+
+ Part 2.1 Atleast 1 unit apart
+
+
+
+ Part 2.2 Symmetric (Parrent allways centered above its children)
+
+
+
+ Part 2.3 Reflective (When reflecting, property 1 and 2 still holds)
+
+
+
+ Part 2.4 Identical rendering (identical subtrees render identically)
+
+
+
+ PostScript 
+
+%!
+1 1 scale
+<</PageSize[595 842]/ImagingBBox null>> setpagedevice
+1500 1200 translate
+newpath
+/Times-Roman findfont 18 scalefont setfont
+0 -10 moveto
+0.000000 -25.000000 moveto
+(root) dup stringwidth pop 2 div neg 0 rmoveto show
+0.000000 -32.500000 moveto
+0.000000 -32.500000 moveto
+-100.000000 -82.500000 lineto
+-100.000000 -97.500000 moveto
+(L1) dup stringwidth pop 2 div neg 0 rmoveto show
+-100.000000 -105.000000 moveto
+0.000000 -32.500000 moveto
+-50.000000 -82.500000 lineto
+-50.000000 -97.500000 moveto
+(B1) dup stringwidth pop 2 div neg 0 rmoveto show
+-50.000000 -105.000000 moveto
+-50.000000 -105.000000 moveto
+-75.000000 -155.000000 lineto
+-75.000000 -170.000000 moveto
+(01) dup stringwidth pop 2 div neg 0 rmoveto show
+-75.000000 -177.500000 moveto
+-50.000000 -105.000000 moveto
+-25.000000 -155.000000 lineto
+-25.000000 -170.000000 moveto
+(02) dup stringwidth pop 2 div neg 0 rmoveto show
+-25.000000 -177.500000 moveto
+0.000000 -32.500000 moveto
+50.000000 -82.500000 lineto
+50.000000 -97.500000 moveto
+(B2) dup stringwidth pop 2 div neg 0 rmoveto show
+50.000000 -105.000000 moveto
+50.000000 -105.000000 moveto
+25.000000 -155.000000 lineto
+25.000000 -170.000000 moveto
+(03) dup stringwidth pop 2 div neg 0 rmoveto show
+25.000000 -177.500000 moveto
+50.000000 -105.000000 moveto
+75.000000 -155.000000 lineto
+75.000000 -170.000000 moveto
+(04) dup stringwidth pop 2 div neg 0 rmoveto show
+75.000000 -177.500000 moveto
+0.000000 -32.500000 moveto
+100.000000 -82.500000 lineto
+100.000000 -97.500000 moveto
+(L2) dup stringwidth pop 2 div neg 0 rmoveto show
+100.000000 -105.000000 moveto
+stroke
+showpage
+
+
+
+ PostScript slow vs fast 
+
+Running testof : toPSslow - The mean was: 2.629996 - Observations: [5.5532; 1.595; 1.4777; 1.2287; 1.2999; 1.1564; 1.0654; 1.0771; 0.9988; 0.9852;
+ 1.0447; 1.0351; 1.0342; 1.1402; 1.0544; 1.1198; 1.138; 1.1002; 1.4394; 1.3685;
+ 1.2075; 1.259; 1.0044; 1.0228; 1.1946; 1.2103; 1.1304; 1.1833; 1.1152; 1.1523;
+ 1.0031; 1.1461; 1.01; 1.1555; 1.7838; 0.9986; 1.0098; 1.2971; 1.288; 1.2769;
+ 1.0831; 1.1903; 1.081; 1.1732; 1.1385; 0.946; 1.287; 1.2528; 1.3012; 1.156;
+ 1.1863; 1.1123; 0.9767; 1.0629; 1.1593; 1.1366; 1.0696; 1.0903; 1.1641; 1.0929;
+ 1.3431; 1.2319; 1.4814; 1.1919; 1.0164; 1.1697; 1.2623; 1.204; 1.2225; 1.153;
+ 1.0637; 1.1828; 1.2858; 1.1341; 1.0538; 1.3954; 1.326; 1.1402; 1.2762; 0.9815;
+ 1.6494; 1.4273; 1.763; 1.4459; 1.4904; 1.5046; 1.5264; 1.6343; 1.172; 1.0591;
+ 1.2177; 1.1529; 1.2105; 1.1462; 1.2402; 2.3176; 2.6714; 2.4073; 2.9253; 2.4019]
+
+Running testof : toPSfast - The mean was: 0.131344 - Observations: [0.168; 0.0231; 0.0513; 0.0707; 0.0401; 0.071; 0.0789; 0.0854; 0.055; 0.0502;
+ 0.0827; 0.061; 0.0958; 0.6581; 0.0025; 0.0385; 0.0757; 0.0969; 0.0185; 0.0427;
+ 0.0925; 0.113; 0.0596; 0.0828; 0.1074; 0.0318; 0.055; 0.0972; 0.0275; 0.0499;
+ 0.0713; 0.1094; 0.0448; 0.0182; 0.042; 0.0273; 0.0614; 0.088; 0.0969; 0.035;
+ 0.0661; 0.3008; 0.0199; 0.0736; 0.0737; 0.0235; 0.0459; 0.0823; 0.081; 0.0474;
+ 0.0479; 0.0728; 0.0226; 0.0562; 0.0544; 0.0023; 0.0302; 0.0591; 0.0819; 0.0201;
+ 0.0476; 0.0795; 0.1034; 0.0343; 0.0581; 0.0928; 0.0535; 0.0715; 0.0696; 0.0165;
+ 0.0379; 0.0864; 0.0764; 0.0424; 0.0441; 0.0893; 0.0088; 0.0531; 0.0668; 0.0018;
+ 0.0201; 0.0538; 0.088; 0.0339; 0.0568; 0.0679; 0.0825; 0.0265; 0.0443; 0.0751;
+ 0.0417; 0.0513; 0.0916; 0.0266; 0.024; 0.0572; 0.0905; 0.0257; 0.0023; 0.0348]
+
+
+ Abstract syntax tree is saved into FirstProject\bin\Debug\net5.0\GCprogram.ps 
+
