@@ -25,7 +25,7 @@
   - [ ] Make a brief discussion of the principles you used in your transformation from programs to trees of typeTree<string>, and your considerations concerning that transformation
   - [ ] Report part
 - [ ] Extensions
-  - [ ] Translation to Scalable Vector Graphics
+  - [x] Tail recursion
   - [ ] Report part
 - [ ] Evaluation
   - [ ] Report part
